@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'devise','~> 3.2'
+gem 'rolify'
 gem 'activeadmin'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
