@@ -49,7 +49,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.5.0)
+    acts_as_list (0.9.2)
+      activerecord (>= 3.0)
+    addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
     annotate (2.7.2)
       activerecord (>= 3.2, < 6.0)
@@ -75,6 +77,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.4)
+    daemons (1.2.4)
     debug_inspector (0.0.2)
     devise (3.5.10)
       bcrypt (~> 3.0)
@@ -84,11 +87,12 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.3)
-    dragonfly (1.1.1)
+    dragonfly (1.1.3)
       addressable (~> 2.3)
       multi_json (~> 1.0)
       rack (>= 1.3)
     erubis (2.7.0)
+    eventmachine (1.2.2)
     execjs (2.7.0)
     factory_girl (4.8.0)
       activesupport (>= 3.0.0)
@@ -140,7 +144,7 @@ GEM
     polyamorous (1.3.1)
       activerecord (>= 3.0)
     powerpack (0.1.1)
-    public_suffix (2.0.4)
+    public_suffix (2.0.5)
     rack (1.6.5)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -225,6 +229,10 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    thin (1.7.0)
+      daemons (~> 1.0, >= 1.0.9)
+      eventmachine (~> 1.0, >= 1.0.4)
+      rack (>= 1, < 3)
     thor (0.19.4)
     thread_safe (0.3.5)
     tilt (2.0.5)
@@ -249,12 +257,13 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  acts_as_list
   annotate
   byebug
   cancancan
   coffee-rails (~> 4.1.0)
   devise (~> 3.2)
-  dragonfly
+  dragonfly (~> 1.1.3)
   factory_girl
   geocoder
   jbuilder (~> 2.0)
@@ -267,6 +276,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
+  thin
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)

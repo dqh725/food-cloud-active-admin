@@ -8,9 +8,10 @@ gem 'rolify'
 # CMS for admin
 gem 'activeadmin'
 # Image process
-gem 'dragonfly'
+gem 'dragonfly', '~> 1.1.3'
 gem 'geocoder'
 gem 'annotate'
+gem 'acts_as_list'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
@@ -58,4 +59,6 @@ group :development do
   gem 'spring'
   # Style inspector
   gem 'rubocop'
+  # A small and fast Ruby web server
+  gem 'thin'
 end

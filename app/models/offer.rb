@@ -16,4 +16,6 @@
 
 class Offer < ActiveRecord::Base
   belongs_to :shop
+  has_many :photos, -> { order(position: :asc) }
+  accepts_nested_attributes_for :photos
 end

@@ -6,7 +6,6 @@ class CreateShops < ActiveRecord::Migration
       t.string :address, default: '', null: false
       t.float :latitude, default: 0.0, null: false
       t.float :longitude, default: 0.0, null: false
-      t.uuid :user_id
 
       t.timestamps null: false
     end

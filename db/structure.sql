@@ -83,6 +83,39 @@ CREATE TABLE offers (
 
 
 --
+-- Name: photos; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE photos (
+    id integer NOT NULL,
+    offer_id uuid,
+    image_uid character varying,
+    "position" integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: photos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE photos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: photos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE photos_id_seq OWNED BY photos.id;
+
+
+--
 -- Name: roles; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -117,7 +150,6 @@ CREATE TABLE shops (
     address character varying DEFAULT ''::character varying NOT NULL,
     latitude double precision DEFAULT 0.0 NOT NULL,
     longitude double precision DEFAULT 0.0 NOT NULL,
-    user_id uuid,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -129,6 +161,8 @@ CREATE TABLE shops (
 
 CREATE TABLE users (
     id uuid DEFAULT uuid_generate_v4() NOT NULL,
+    name character varying DEFAULT ''::character varying NOT NULL,
+    shop_id uuid,
     email character varying DEFAULT ''::character varying NOT NULL,
     encrypted_password character varying DEFAULT ''::character varying NOT NULL,
     reset_password_token character varying,
@@ -155,6 +189,13 @@ CREATE TABLE users_roles (
 
 
 --
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY photos ALTER COLUMN id SET DEFAULT nextval('photos_id_seq'::regclass);
+
+
+--
 -- Name: active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -168,6 +209,14 @@ ALTER TABLE ONLY active_admin_comments
 
 ALTER TABLE ONLY offers
     ADD CONSTRAINT offers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: photos_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY photos
+    ADD CONSTRAINT photos_pkey PRIMARY KEY (id);
 
 
 --
@@ -276,4 +325,6 @@ INSERT INTO schema_migrations (version) VALUES ('20170611081752');
 INSERT INTO schema_migrations (version) VALUES ('20170613092420');
 
 INSERT INTO schema_migrations (version) VALUES ('20170613094950');
+
+INSERT INTO schema_migrations (version) VALUES ('20170617071747');
 

@@ -3,6 +3,8 @@
 # Table name: users
 #
 #  id                     :uuid             not null, primary key
+#  name                   :string           default(""), not null
+#  shop_id                :uuid
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
@@ -25,11 +27,15 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :offers, dependent: :nullify
-  has_many :shops, dependent: :nullify
+  belongs_to :shop
 
-  ['staff', 'provider', 'customer'].each do |role|
+  ['staff', 'admin', 'customer'].each do |role|
     define_method "is_#{role}?" do
       has_role?(role.to_sym)
     end
+  end
+
+  def role_names
+    roles.map(&:display_name).join(', ')
   end
 end
