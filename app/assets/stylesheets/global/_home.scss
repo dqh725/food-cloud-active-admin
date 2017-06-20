@@ -1,0 +1,30 @@
+@import 'variables';
+
+.cd-main-content {
+  background: $color-3;
+  min-height: 100vh;
+  z-index: $content;
+}
+
+.cd-main-header {
+  height: $header-height-S;
+  background: $color-4;
+  z-index: $above-content;
+}
+
+.cd-logo {
+  position: absolute;
+  top: 12px;
+  left: 5%;
+}
+
+.cd-header-buttons {
+  position: absolute;
+  display: inline-block;
+  top: 3px;
+  right: 5%;
+
+  li {
+    display: inline-block;
+  }
+}

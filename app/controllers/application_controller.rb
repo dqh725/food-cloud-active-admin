@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_ability
-    @current_ability ||= ::Ability.new(current_user)
+    @current_ability ||= ::Ability.new(current_user || current_customer)
   end
 
   def access_denied(exception)
@@ -22,4 +22,8 @@ class ApplicationController < ActionController::Base
   #   end
   #   redirect_to :back
   # end
+
+  def home
+    render '/home'
+  end
 end

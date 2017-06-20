@@ -12,6 +12,7 @@ gem 'dragonfly', '~> 1.1.3'
 gem 'geocoder'
 gem 'annotate'
 gem 'acts_as_list'
+gem 'font-awesome-sass'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
