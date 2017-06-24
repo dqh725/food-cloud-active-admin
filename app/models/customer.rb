@@ -4,6 +4,7 @@
 #
 #  id                     :uuid             not null, primary key
 #  name                   :string           default(""), not null
+#  access_level           :integer          default(0), not null
 #  shop_id                :uuid
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null

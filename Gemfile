@@ -3,8 +3,6 @@ ruby '2.3.1'
 
 gem 'devise', '~> 3.2'
 gem 'cancancan'
-# user different role
-gem 'rolify'
 # CMS for admin
 gem 'activeadmin'
 # Image process
@@ -13,6 +11,7 @@ gem 'geocoder'
 gem 'annotate'
 gem 'acts_as_list'
 gem 'font-awesome-sass'
+gem 'pry'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'

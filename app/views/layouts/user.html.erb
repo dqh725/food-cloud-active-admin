@@ -2,21 +2,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AaFoodClouds</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <title>FoodClouds</title>
+  <%= stylesheet_link_tag    'customers', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 
 <body>
-<div class="parent2">
-  <div class="test1"><i class="fa fa-user fa-2x"></i></div>
-  <div class="test2"><i class="fa fa-graduation-cap fa-2x"></i></div>
-  <div class="test3"><i class="fa fa-code fa-2x"></i></div>
-  <div class="test4"><i class="fa fa-envelope-o fa-2x"></i></div>
-  <div class="mask2"><i class="fa fa-home fa-3x"></i></div>
-</div>
-
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-collapse collapse" id="collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <%if customer_signed_in? %>
+          <li class="app-nav"><%=link_to "Home", users_index_path%></li>
+          <li class="app-nav"><%=link_to "Log Out", destroy_customer_session_path, :method => :delete%></li>
+        <%end%>
+      </ul>
+    </div>
+  </nav>
 <%= yield %>
 </body>
 </html>

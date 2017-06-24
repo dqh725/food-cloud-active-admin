@@ -116,21 +116,6 @@ ALTER SEQUENCE photos_id_seq OWNED BY photos.id;
 
 
 --
--- Name: roles; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE roles (
-    id uuid DEFAULT uuid_generate_v4() NOT NULL,
-    name character varying,
-    display_name character varying,
-    resource_id integer,
-    resource_type character varying,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -162,6 +147,7 @@ CREATE TABLE shops (
 CREATE TABLE users (
     id uuid DEFAULT uuid_generate_v4() NOT NULL,
     name character varying DEFAULT ''::character varying NOT NULL,
+    access_level integer DEFAULT 0 NOT NULL,
     shop_id uuid,
     email character varying DEFAULT ''::character varying NOT NULL,
     encrypted_password character varying DEFAULT ''::character varying NOT NULL,
@@ -175,16 +161,6 @@ CREATE TABLE users (
     last_sign_in_ip inet,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: users_roles; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE users_roles (
-    user_id uuid,
-    role_id uuid
 );
 
 
@@ -217,14 +193,6 @@ ALTER TABLE ONLY offers
 
 ALTER TABLE ONLY photos
     ADD CONSTRAINT photos_pkey PRIMARY KEY (id);
-
-
---
--- Name: roles_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY roles
-    ADD CONSTRAINT roles_pkey PRIMARY KEY (id);
 
 
 --
@@ -265,20 +233,6 @@ CREATE INDEX index_active_admin_comments_on_resource_type_and_resource_id ON act
 
 
 --
--- Name: index_roles_on_name; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_roles_on_name ON roles USING btree (name);
-
-
---
--- Name: index_roles_on_name_and_resource_type_and_resource_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_roles_on_name_and_resource_type_and_resource_id ON roles USING btree (name, resource_type, resource_id);
-
-
---
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -290,13 +244,6 @@ CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
 --
 
 CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
-
-
---
--- Name: index_users_roles_on_user_id_and_role_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_users_roles_on_user_id_and_role_id ON users_roles USING btree (user_id, role_id);
 
 
 --
@@ -316,11 +263,7 @@ INSERT INTO schema_migrations (version) VALUES ('20170102012033');
 
 INSERT INTO schema_migrations (version) VALUES ('20170102032047');
 
-INSERT INTO schema_migrations (version) VALUES ('20170102032317');
-
 INSERT INTO schema_migrations (version) VALUES ('20170102033600');
-
-INSERT INTO schema_migrations (version) VALUES ('20170611081752');
 
 INSERT INTO schema_migrations (version) VALUES ('20170613092420');
 

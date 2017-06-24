@@ -2,6 +2,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table :users, id: :uuid do |t|
       t.string :name, null: false, default: ''
+      t.integer :access_level, default: 0, null: false
       t.uuid :shop_id
       ## Database authenticatable
       t.string :email,              null: false, default: ''
