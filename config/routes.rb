@@ -9,7 +9,7 @@ Rails.application.routes.draw do
                            registrations: 'customers/registrations'
                          }
   get 'users/index' => 'customers#index'
-
+  get 'offers/search' => 'customers#search'
   ActiveAdmin.routes(self)
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

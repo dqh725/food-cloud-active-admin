@@ -24,6 +24,6 @@ class ApplicationController < ActionController::Base
   # end
 
   def home
-    render '/home'
+    render '/home', layout: 'user'
   end
 end

@@ -10,11 +10,21 @@
 
 <body>
   <nav class="navbar navbar-default" role="navigation">
+    <%= image_tag('icon.png', class: 'cd-logo') %>
     <div class="navbar-collapse collapse" id="collapse">
       <ul class="nav navbar-nav navbar-right">
         <%if customer_signed_in? %>
+          <li class="app-nav">
+            <form action="/offers/search" method="get" style="padding:12px;">
+              <input name="q[name_cont]" type="text">
+              <input name="Submit" type="submit" value="GO">
+            </form>
+          </li>
           <li class="app-nav"><%=link_to "Home", users_index_path%></li>
-          <li class="app-nav"><%=link_to "Log Out", destroy_customer_session_path, :method => :delete%></li>
+          <li class="app-nav"><%=link_to "Logout", destroy_customer_session_path, :method => :delete%></li>
+        <%else%>
+          <li class="app-nav"><%= link_to 'User Login', new_customer_session_path, class: "cd-search-trigger" %></li>
+          <li class="app-nav"><%= link_to 'Admin Login', new_user_session_path, class: "cd-nav-trigger" %></li>
         <%end%>
       </ul>
     </div>

@@ -12,16 +12,18 @@
   z-index: $above-content;
 }
 
-.cd-logo {
+img.cd-logo {
   position: absolute;
-  top: 12px;
+  top: 0;
   left: 5%;
+  height: 50px;
+  widht: auto;
 }
 
 .cd-header-buttons {
   position: absolute;
   display: inline-block;
-  top: 3px;
+  top: 15px;
   right: 5%;
 
   li {

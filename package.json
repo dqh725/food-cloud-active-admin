@@ -1,0 +1,22 @@
+{
+  "name": "aa_food_cloud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "''",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://dqh725@github.com/dqh725/food-cloud-active-admin.git"
+  },
+  "author": "Alba Hoo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dqh725/food-cloud-active-admin/issues"
+  },
+  "homepage": "https://github.com/dqh725/food-cloud-active-admin#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
